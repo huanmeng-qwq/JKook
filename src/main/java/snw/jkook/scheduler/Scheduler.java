@@ -34,7 +34,7 @@ public interface Scheduler {
     Task runTask(Plugin plugin, Runnable runnable);
 
     /**
-     * 在指定的毫秒后执行指定的 {@link JKookRunnable} 。
+     * 在指定的毫秒后执行指定的 {@code runnable} 。
      *
      * @param plugin 拥有目标任务的插件对象
      * @param runnable 将被执行的具体任务
@@ -44,7 +44,7 @@ public interface Scheduler {
     Task runTaskLater(Plugin plugin, Runnable runnable, long delay); // note: delay is millisecond.
 
     /**
-     * Execute the runnable again and again.
+     * 反复执行目标 {@code runnable} 。
      *
      * @param plugin 拥有目标任务的插件对象
      * @param runnable 将被执行的具体任务

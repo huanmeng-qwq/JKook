@@ -36,8 +36,8 @@ public abstract class JKookRunnable implements Runnable {
     /**
      * 在指定的毫秒后执行此任务。
      *
-     * @param delay    The delay time
-     * @return The task object
+     * @param delay    执行目标任务之前等待的毫秒数
+     * @return 计划任务对象
      */
     public synchronized Task runTaskLater(Plugin plugin, long delay) {
         Validate.isTrue(task == null, "This runnable has already scheduled.");
