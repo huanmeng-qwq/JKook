@@ -23,7 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a card builder. Support multiple card.
+ * 表示一个卡片构造器。
  */
 public class CardBuilder {
     private Theme theme;
@@ -32,8 +32,10 @@ public class CardBuilder {
     private final List<CardComponent> cards = new LinkedList<>();
 
     /**
-     * Set theme of current card.
-     * @param theme The theme
+     * 为当前的卡片设置主题。
+     *
+     * @param theme 主题的枚举对象
+     * @see Theme
      */
     public CardBuilder setTheme(Theme theme) {
         this.theme = theme;
@@ -41,8 +43,9 @@ public class CardBuilder {
     }
 
     /**
-     * Set the size of current card.
-     * @param size The size
+     * 设置卡片的渲染大小。
+     *
+     * @param size 卡片大小的枚举对象
      */
     public CardBuilder setSize(Size size) {
         this.size = size;
@@ -50,8 +53,9 @@ public class CardBuilder {
     }
 
     /**
-     * Add a module to current card.
-     * @param module The module
+     * 向当前卡片增加一个模块。
+     *
+     * @param module 模块对象
      */
     public CardBuilder addModule(BaseModule module) {
         this.modules.add(module);
@@ -59,21 +63,21 @@ public class CardBuilder {
     }
 
     /**
-     * Create a new card using the data that saved by this builder and reset the data in this builder. <p>
-     * After that, you can create new card! <p>
-     * Example:
+     * 将当前的数据保存到一个卡片对象，并重置此构造器的数据。<br>
+     * 在这之后，新的数据将被看作是为新卡片准备的。<br>
+     * 使用示例:
      * <blockquote><pre>
      *     new CardBuilder()
      *         .setTheme(Theme.PRIMARY)
      *         .setSize(Size.LG)
-     *         .addModule(new HeaderModule(new PlainTextElement("This is header", false))) // now the builder have a header
-     *         .addModule(new SectionModule(new PlainTextElement("This is body"), null, null)) // now the builder have a body
-     *         .newCard() // now a card will be built, and the data will be reset
+     *         .addModule(new HeaderModule(new PlainTextElement("This is header", false)))
+     *         .addModule(new SectionModule(new PlainTextElement("This is body"), null, null))
+     *         .newCard() // 现在，一个新的有 2 个模块的卡片将被保存，然后主题、大小、模块列表将重置。
      *         .setTheme(Theme.DANGER)
      *         .setSize(Size.LG)
-     *         .addModule(new HeaderModule(new PlainTextElement("This is header of the second card", false))) // the header of the second card
-     *         .addModule(new SectionModule(new PlainTextElement("This is body of the second card"), null, null)) // the body of the second card
-     *         .build(); // you will got a multiple card, and two cards inside it.
+     *         .addModule(new HeaderModule(new PlainTextElement("This is header of the second card", false)))
+     *         .addModule(new SectionModule(new PlainTextElement("This is body of the second card"), null, null))
+     *         .build(); // 你将得到一个由 2 个卡片组成的复合卡片对象
      * </pre></blockquote>
      */
     public CardBuilder newCard() {
@@ -88,7 +92,7 @@ public class CardBuilder {
     }
 
     /**
-     * Build the multiple card.
+     * 构造并返回最终的卡片对象。
      */
     public MultipleCardComponent build() {
         if (!modules.isEmpty()) {
